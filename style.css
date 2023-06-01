@@ -1,0 +1,246 @@
+header{
+  display: flex;
+  max-height: 50px;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom:2px solid  rgb(157, 157, 157);
+  background-color: white;
+  /* margin-left: 51.67px; */
+}
+
+header div.heading{
+  display: flex;
+  
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+}
+
+header div div.Logo{
+  font-size: 20px;
+  padding-left: 2.5rem;
+  display:flex;
+  align-items: center;
+}
+hr{
+  width: 37.03px;
+height: 0px;
+
+border: 1px solid rgb(157, 157, 157);
+transform: rotate(90deg);
+}
+header div .logo{
+  width: 32.42px;
+  display: inline;
+}
+
+header div .searchBar{
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 0px;
+
+}
+
+header span{
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding-left: 8px;
+}
+
+.Logo .logo1{
+  width: 32.42px;
+  height: 32.42px;
+
+}
+
+div .searchImg .logo2{
+  width: 10px;
+  display: inline;
+  padding-top: 4px;
+}
+
+div .searchBox{
+  border: none;
+  padding-bottom: 1px;
+  padding-top: 5px;
+  margin-left: 0.25rem;
+  margin-right: 0.5rem;
+}
+
+div .searchBar input::placeholder{
+  text-align: center;
+  color: #A7AEBA;
+}
+
+div .searchBox:focus{
+  text-align: center;
+  border: 3px solid grey;
+  border-radius: 12px;
+  outline: none;
+}
+.a{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  background-color: rgb(241 245 249);
+}
+main {
+  display: flex;
+  flex-flow: column;
+  top: 0px;
+  justify-content: space-between;
+  padding-bottom: 28px;
+  margin: 2px;
+  border-right-width: 2px;
+  grid-column: span 1 / span 1;
+  border-right-color: rgb(168 162 158);
+  background-color: #D4DADF;
+}
+
+main ul{
+  display: flex;
+  flex-flow: column;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-top: 1.rem;
+  font-weight: bold;
+  padding: 8px;
+  background-color: #D4DADF;
+  text-align: center;
+}
+
+main ul li {
+  list-style-type: none;
+  font-size: 1.125rem; 
+  line-height: 1.75rem;
+  margin: 0.25rem;
+  margin-left: 24px;
+  padding-top: 12px;
+  padding-bottom:12px;
+  padding-left: 24px;
+  border: 1px solid #D4DADF;
+} 
+a{
+  text-decoration: none;
+  color: black;
+}
+main ul input::placeholder{
+  text-align: center;
+  color: #A7AEBA;
+
+}
+.search_result .searchBox{
+  display: inline;
+  font-size: 2 em;
+  border:none;
+}
+.search_result:hover {
+  background-color: #D4DADF;
+  border:none;
+}
+main ul li:hover {
+  background-color: #F5F7F9;
+  border: solid 1px black ;
+}
+
+.Add{
+  display: flex;
+  flex-flow: column;
+  font-size: 1.25rem; 
+  line-height: 2rem;
+  padding: 6px 10px;
+  position: relative;
+  top: 50%;
+  left:45%;
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+.Add:hover{
+  color: white;
+-webkit-transform: scale(1.5);
+  transform: scale(1.25);
+  border: 1px solid black;
+  font-weight: bold;
+}
+
+body div div#movies{
+  background-position: center;
+  margin: 10px;
+}
+
+.hide{
+  display: none;
+}
+#container{
+  display: grid;
+  grid-column: span 3 / span 3;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 20px 20px;
+  
+}
+#movies{
+  box-sizing: border-box; 
+  margin: 0.25rem; 
+  margin-bottom: 0.25rem; 
+  margin-top: 2rem; 
+  background-color: #ffffff; 
+  font-weight: 500; 
+  width: 12rem; 
+  height: 16rem; 
+  border-radius: 0.5rem; 
+  border: 2px solid black;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+}
+
+#movies img{
+  width: 11.8rem; 
+  height: 13rem; 
+  border-radius: 0.375rem; 
+
+}
+.text-center{
+  text-align: center;
+  color:black;
+  font-weight: 700;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 10rem;
+  margin: 0;
+}
+
+@media screen and (max-width: 1350px){
+  #container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+}
+@media screen and (max-width: 750px){
+#movies{
+padding: 0;
+}
+#movies img{
+height:13rem;
+}
+}
+@media screen and (max-width: 640px){
+  .a{
+    display: block;
+  }
+  #container{
+    display: grid;
+    grid-column: span 2 / span 2;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
