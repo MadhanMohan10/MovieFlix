@@ -201,6 +201,10 @@ body div div#movies{
 
 }
 
+#movies:hover{
+  scale: 1.2;
+}
+
 #movies img{
   width: 11.8rem; 
   height: 13rem; 
