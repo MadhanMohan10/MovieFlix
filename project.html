@@ -18,63 +18,71 @@
             </div>
 
             <div>
-                <p>  Double Click on movies to get Details of it & click to go back</p>
-                <p>  Type movie name to get movies  </p>
+                <p>Double Click on movies to get Details of it & click to go back</p>
+                <p>Type movie name to get movies</p>
             </div>
-            
 
             <div class="searchBar">
-              <hr>
+                <hr>
                 <div class="searchImg">
-                  <img class="logo2" src="img2.png" alt="logo"/>               
+                    <img class="logo2" src="img2.png" alt="logo"/>               
                 </div>
                 <div id="search-movies">
                     <input type="text" class="searchBox " id='searchtext' placeholder="Quick Search" data-search/>
+                </div>
+                <div>
+                    <select id="genre-select">
+                        <option value="">Select Genre</option>
+                        <option value="28">Action</option>
+                        <option value="12">Adventure</option>
+                        <option value="16">Animation</option>
+                        <option value="35">Comedy</option>
+                        <option value="80">Crime</option>
+                        <option value="99">Documentary</option>
+                        <option value="18">Drama</option>
+                        <option value="10751">Family</option>
+                        <option value="14">Fantasy</option>
+                        <option value="36">History</option>
+                        <option value="27">Horror</option>
+                        <option value="10402">Music</option>
+                        <option value="9648">Mystery</option>
+                        <option value="10749">Romance</option>
+                        <option value="878">Science Fiction</option>
+                        <option value="10770">TV Movie</option>
+                        <option value="53">Thriller</option>
+                        <option value="10752">War</option>
+                        <option value="37">Western</option>
+                    </select>
                 </div>
             </div>
         </div>
     </header>
     <div class="a">
-        <main >
-                <div id="team-list">
-                    <ul>
-                        <li >
-                          <a href="#">Search Results</a>
-                        </li>
-                        <li >
-                          <a href="#">All Team</a>
-                        </li>
-                        <li >
-                            <a href="#">Core</a>
-                        </li>
-                        <li>
-                            <a href="#">Developers</a>
-                        </li>
-                        <li>
-                            <a href="#">Designers</a>
-                        </li>
-                        <li>
-                            <a href="#">Mentors</a>
-                        </li>
-                    </ul>
-                    <button class="Add">
-                      +Add
-                  </button>
-                </div>   
+        <main>
+            <div id="team-list">
+                <ul>
+                    <li><a href="#">Search Results</a></li>
+                    <li><a href="#">All Team</a></li>
+                    <li><a href="#">Core</a></li>
+                    <li><a href="#">Developers</a></li>
+                    <li><a href="#">Designers</a></li>
+                    <li><a href="#">Mentors</a></li>
+                </ul>
+                <button class="Add">+Add</button>
+            </div>   
         </main>
-        <div id="container"  data-movie-container>
-        </div>
+        <div id="container" data-movie-container></div>
     </div>
     <template data-user-template>
-        <div id="movies" >
-            <img src=""  data-movie-img/>
+        <div id="movies">
+            <img src="" data-movie-img/>
             <p class="text-center" data-title></p>
-            <div id="movieDetails"  mov-tap>
+            <div id="movieDetails" mov-tap>
                 <h2 class="movie-title" movie-title></h2>
                 <p class="ger" genre></p>
-                <p class="rd" data-rd> </p>
+                <p class="rd" data-rd></p>
                 <p class="rate" data-rate></p>
-                <p class = "over" data-over></p>
+                <p class="over" data-over></p>
             </div>
         </div>
     </template>

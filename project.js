@@ -2,39 +2,34 @@ const API_KEY = 'api_key=c521298dcd6b4625968925fc0f5cd547';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&' + API_KEY;
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
-const searc_URL = BASE_URL + '/search/movie?' + API_KEY;
+
 const userCardTemplate = document.querySelector("[data-user-template]");
 const searchBar = document.querySelector("[data-search]");
+const genreSelect = document.getElementById('genre-select');
 const movieContainer = document.querySelector("[data-movie-container]");
 
 let movies = [];
-let url = API_URL;
 
-searchBar.addEventListener("input", e => {
-    const value = e.target.value.toLowerCase();
-    if (value === '' || value === undefined){
-        url = API_URL;
-        movieContainer.innerHTML = ``;
-        fet(url);
-    } else{
-        url = `https://api.themoviedb.org/3/search/movie?${API_KEY}&query=${value}&include_adult=false`;
-        movieContainer.innerHTML = ``;
-        fet(url);
+function fetchMovies() {
+    const searchText = searchBar.value.toLowerCase();
+    const selectedGenre = genreSelect.value;
+    let url = API_URL;
+
+    if (selectedGenre && searchText) {
+        url = `${BASE_URL}/search/movie?${API_KEY}&query=${searchText}&include_adult=false&with_genres=${selectedGenre}`;
+    } else if (selectedGenre) {
+        url = `${BASE_URL}/discover/movie?${API_KEY}&with_genres=${selectedGenre}&sort_by=popularity.desc`;
+    } else if (searchText) {
+        url = `${BASE_URL}/search/movie?${API_KEY}&query=${searchText}&include_adult=false`;
     }
-    console.log(url);
-});
 
-function fet(url){
-   
+    movieContainer.innerHTML = ``;
     fetch(url)
-    .then(response => response.json())
-
-    .then(data => {   
-            console.log(data);
-            movies = data.results.map(movie => {  
+        .then(response => response.json())
+        .then(data => {
+            movies = data.results.map(movie => {
                 const movieCard = userCardTemplate.content.cloneNode(true).children[0];
-                console.log(movieCard);
-
+                
                 const title = movieCard.querySelector("[data-title]");
                 const image = movieCard.querySelector("[data-movie-img]");
                 const rd = movieCard.querySelector("[data-rd]");
@@ -44,17 +39,17 @@ function fet(url){
                 const gen = movieCard.querySelector("[genre]");
 
                 title.textContent = movie.original_title;
-                image.src = `${IMG_URL+movie.poster_path}`;
+                image.src = `${IMG_URL + movie.poster_path}`;
 
                 movieCard.addEventListener('dblclick', () => {
                     movtitle.textContent = movie.title;
-                    gen.textContent = ' Genre : '+getGenres(movie.genre_ids);
-                    rd.textContent = ' Release Date : '+movie.release_date;
-                    rate.textContent = ' Rating : '+movie.vote_average;
-                    overview.textContent = ' Overview : '+movie.overview;
+                    gen.textContent = ' Genre : ' + getGenres(movie.genre_ids);
+                    rd.textContent = ' Release Date : ' + movie.release_date;
+                    rate.textContent = ' Rating : ' + movie.vote_average;
+                    overview.textContent = ' Overview : ' + movie.overview;
                     displayMovieDetails(movie);
-                    
                 });
+
                 movieCard.addEventListener('click', () => {
                     movtitle.textContent = '';
                     gen.textContent = '';
@@ -65,30 +60,22 @@ function fet(url){
                         movie.element.classList.remove("hide");
                     });
                 });
+
                 movieContainer.append(movieCard);
-                return{title1: movie.title, title2: movie.id, element: movieCard}; 
+                return { title1: movie.title, title2: movie.id, element: movieCard }; 
+            });
         });
-        console.log(movies);
-    });
-
-};
-fet(url);
-
+}
 
 function displayMovieDetails(_movie) {
     const val1 = _movie.title;
     const val2 = _movie.id;
-    console.log(val1);
-    console.log(val2);
-    let Visible;
+
     movies.forEach(movie => {
-        if(val1 == movie.title1 && val2 == movie.title2){ Visible= true;}
-        else{Visible = false;}
+        const Visible = (val1 === movie.title1 && val2 === movie.title2);
         movie.element.classList.toggle("hide", !Visible);
     });
-    
-    
-};
+}
 
 function getGenres(genreIds) {
     const genres = {
@@ -113,7 +100,10 @@ function getGenres(genreIds) {
         37: 'Western'
     };
   
-    const genreNames = genreIds.map(id => genres[id]);
-    return genreNames.join(', ');
-  }
+    return genreIds.map(id => genres[id]).join(', ');
+}
 
+searchBar.addEventListener("input", fetchMovies);
+genreSelect.addEventListener("change", fetchMovies);
+
+fetchMovies();
